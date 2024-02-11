@@ -1,0 +1,72 @@
+/* Global Styles */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #fce8ea; /* Romantic pink background */
+  margin: 0;
+  padding: 20px;
+  /* Background hearts */
+  background-image: url('hearts-background.png'); /* Replace 'hearts-background.png' with the path to your heart background image */
+  background-repeat: repeat; /* Repeat the heart background */
+}
+
+h1 {
+  text-align: center;
+  color: #000000; /* Deep red title color */
+  font-size: 36px; /* Larger font size for romantic feel */
+}
+
+form {
+  max-width: 500px;
+  margin: 0 auto;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px; /* Rounded corners for a softer look */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: bold;
+  color: #8c1b25; /* Deep red label color */
+}
+
+input[type="text"],
+input[type="number"],
+textarea,
+select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #dcdcdc; /* Light gray border */
+  border-radius: 5px; /* Rounded corners */
+  box-sizing: border-box;
+  margin-bottom: 10px;
+  background-color: #f9f9f9; /* Light gray background */
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+  margin-bottom: 10px;
+}
+
+input[type="submit"] {
+  background-color: #000000; /* Deep red submit button */
+  color: #fff;
+  padding: 12px 20px; /* Slightly larger padding for a more prominent button */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, opacity 0.3s ease; /* Smooth transition on hover */
+}
+
+input[type="submit"]:hover {
+  background-color: #8c1b25; /* Darker red on hover */
+  opacity: 0.8; /* Fading effect on hover */
+}
+
+/* Media Queries */
+@media (max-width: 600px) {
+  form {
+      padding: 15px; /* Adjusted padding for smaller screens */
+  }
+}
