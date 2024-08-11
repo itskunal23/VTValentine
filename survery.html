@@ -1,10 +1,130 @@
 <!DOCTYPE html>
-<html>
+<body lang="en">
 <head>
-  <link rel="stylesheet" href="survery.css">
-  <script src="survery.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="survery.css">
+    <title>VT Wya</title>
+</head>
+<body>
+    <header>
+        <h1>VT Wya</h1>
+    </header>
+    <main>
+        <section id="about-me" class="tab-content active">
+            <form name="submit-to-google-sheet" id="questionnaire-form" method="POST">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="Name" required>
 
+                <label for="gender">Gender:</label>
+                <select id="gender" name="Gender" required>
+                    <option value=""></option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Other">Other</option>
+                </select>
 
-  
-  <iframe src="https://bok25nnb8sl.typeform.com/to/k7Q7pj3A" style="width:100%; height:500px; border:none;"></iframe>
-  
+                <label for="age">Age:</label>
+                <input type="number" id="age" name="Age" required>
+
+                <label for="location">Location:</label>
+                <input type="text" id="location" name="Location" required>
+
+                <label for="preference">What are you looking for?:</label>
+                <select id="preference" name="Preference" required>
+                    <option value="">Select...</option>
+                    <option value="Friendship">Friendship</option>
+                    <option value="Dating">Dating</option>
+                    <option value="Other">Other</option>
+                </select>
+
+                <label for="dealbreaker">What's a dealbreaker for you in a relationship?</label>
+                <select id="dealbreaker" name="Dealbreaker" required onchange="toggleTextBox(this, 'dealbreakerText')">
+                    <option value="Different political views">Different political views</option>
+                    <option value="Different religious beliefs">Different religious beliefs</option>
+                    <option value="Smoking">Smoking</option>
+                    <option value="Lack of ambition">Lack of ambition</option>
+                    <option value="None of the above">None of the above</option>
+                </select>
+                <input type="text" id="dealbreakerText" name="DealbreakerText" placeholder="Please specify" style="display:none;">
+
+                <label for="communication">How do you prefer to resolve conflicts?</label>
+                <select id="communication" name="Communication" required onchange="toggleTextBox(this, 'communicationText')">
+                    <option value="Talking it out immediately">Talking it out immediately</option>
+                    <option value="Giving space and discussing later">Giving space and discussing later</option>
+                    <option value="Avoiding confrontation">Avoiding confrontation</option>
+                    <option value="None of the above">None of the above</option>
+                </select>
+                <input type="text" id="communicationText" name="CommunicationText" placeholder="Please specify" style="display:none;">
+
+                <label for="loyalty">How important is loyalty in a relationship?</label>
+                <select id="loyalty" name="Loyalty" required onchange="toggleTextBox(this, 'loyaltyText')">
+                    <option value="Most important">Most important</option>
+                    <option value="Somewhat important">Somewhat important</option>
+                    <option value="Not important">Not important</option>
+                    <option value="None of the above">None of the above</option>
+                </select>
+                <input type="text" id="loyaltyText" name="LoyaltyText" placeholder="Please specify" style="display:none;">
+
+                <label for="spontaneity">How spontaneous are you?</label>
+                <select id="spontaneity" name="Spontaneity" required onchange="toggleTextBox(this, 'spontaneityText')">
+                    <option value="Very spontaneous">Very spontaneous</option>
+                    <option value="Somewhat spontaneous">Somewhat spontaneous</option>
+                    <option value="Not spontaneous at all">Not spontaneous at all</option>
+                    <option value="None of the above">None of the above</option>
+                </select>
+                <input type="text" id="spontaneityText" name="SpontaneityText" placeholder="Please specify" style="display:none;">
+
+                <label for="hobbies">Hobbies:</label>
+                <input type="text" id="hobbies" name="Hobbies" required>
+
+                <label for="fav_sport">Favorite Sport:</label>
+                <input type="text" id="fav_sport" name="Favorite Sport" required>
+
+                <label for="fav_food">Favorite Food:</label>
+                <input type="text" id="fav_food" name="Favorite Food" required>
+
+                <label for="interesting">Tell me something about you that not everyone knows:</label>
+                <input type="text" id="interesting" name="Interesting" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="Email" required>
+
+                <button type="submit">Submit</button>
+            </form>
+        </section>
+    </main>
+    
+    <footer>
+        <p>&copy; VT Wya. All rights reserved.</p>
+        <p>Your Marriage Pact Code: <strong>VTMP2024</strong></p>
+    </footer>
+
+    <script>
+        function toggleTextBox(selectElement, textBoxId) {
+            const textBox = document.getElementById(textBoxId);
+            if (selectElement.value === 'None of the above') {
+                textBox.style.display = 'block';
+                textBox.required = true;
+            } else {
+                textBox.style.display = 'none';
+                textBox.required = false;
+            }
+        }
+
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbwaVHAxNJvs2OYbLaDlweSq4jyK7vlV9Lk00UH5si7dXVh1FAIBc2cBmmkbPqGCxvAc/exec';
+        const form = document.forms['submit-to-google-sheet'];
+
+        form.addEventListener('submit', e => {
+            e.preventDefault();
+            fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+                .then(response => {
+                    console.log('Success!', response);
+                    alert('Form submitted successfully!');
+                    form.reset(); // Optional: Reset the form after successful submission
+                })
+                .catch(error => console.error('Error!', error.message));
+        });
+    </script>
+</body>
+</html>

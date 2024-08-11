@@ -1,72 +1,120 @@
-/* Global Styles */
+/* General Styles */
 body {
   font-family: Arial, sans-serif;
-  background-color: #fce8ea; /* Romantic pink background */
+  background-color: #f3f4f6;
+  color: #4b2e83;
   margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+main {
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  width: 90%;
+  max-width: 600px;  /* Ensuring content visibility */
   padding: 20px;
-  /* Background hearts */
-  background-image: url('hearts-background.png'); /* Replace 'hearts-background.png' with the path to your heart background image */
-  background-repeat: repeat; /* Repeat the heart background */
+  overflow-y: auto;  /* Handle overflow */
+  max-height: 90vh;  /* Ensure content fits within view height */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 h1 {
   text-align: center;
-  color: #000000; /* Deep red title color */
-  font-size: 36px; /* Larger font size for romantic feel */
+  color: #861f41;
+  font-size: 1.8em;
+  margin-bottom: 20px;
 }
 
 form {
-  max-width: 500px;
-  margin: 0 auto;
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 10px; /* Rounded corners for a softer look */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  width: 80%; /* Adjust this value to control the form's width */
+  max-width: 500px; /* Optionally, set a max-width */
+  margin: 0 auto; /* Center the form horizontally */
 }
 
 label {
-  display: block;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
   font-weight: bold;
-  color: #8c1b25; /* Deep red label color */
+  color: #4b2e83;
+  transition: color 0.3s ease;  /* Add transition for hover effect */
 }
 
 input[type="text"],
+input[type="email"],
 input[type="number"],
-textarea,
 select {
-  width: 100%;
   padding: 10px;
-  border: 1px solid #dcdcdc; /* Light gray border */
-  border-radius: 5px; /* Rounded corners */
-  box-sizing: border-box;
-  margin-bottom: 10px;
-  background-color: #f9f9f9; /* Light gray background */
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1em;
+  width: 100%;
+  box-sizing: border-box;  /* Ensure padding does not affect width */
+  transition: border-color 0.3s ease;  /* Add transition for hover effect */
 }
 
-input[type="checkbox"],
-input[type="radio"] {
-  margin-bottom: 10px;
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="number"]:focus,
+select:focus {
+  border-color: #861f41;
+  outline: none;
 }
 
-input[type="submit"] {
-  background-color: #000000; /* Deep red submit button */
-  color: #fff;
-  padding: 12px 20px; /* Slightly larger padding for a more prominent button */
+label:hover,
+input[type="text"]:hover,
+input[type="email"]:hover,
+input[type="number"]:hover,
+select:hover {
+  color: #861f41;  /* Change label color on hover */
+  border-color: #4b2e83;  /* Change input border color on hover */
+}
+
+button[type="submit"] {
+  background-color: #861f41;
+  color: #ffffff;
+  padding: 12px;
   border: none;
-  border-radius: 5px;
+  border-radius: 4px;
+  font-size: 1.2em;
   cursor: pointer;
-  transition: background-color 0.3s ease, opacity 0.3s ease; /* Smooth transition on hover */
+  transition: background-color 0.3s ease;
 }
 
-input[type="submit"]:hover {
-  background-color: #8c1b25; /* Darker red on hover */
-  opacity: 0.8; /* Fading effect on hover */
+button[type="submit"]:hover {
+  background-color: #4b2e83;
 }
 
-/* Media Queries */
-@media (max-width: 600px) {
-  form {
-      padding: 15px; /* Adjusted padding for smaller screens */
+/* Footer Styles */
+footer {
+  text-align: center;
+  margin-top: 20px;
+}
+
+footer p {
+  font-size: 0.9em;
+  color: #999;
+}
+
+/* Responsive Design for Smaller Screens */
+@media (max-width: 500px) {
+  main {
+      padding: 15px;
+  }
+
+  h1 {
+      font-size: 1.5em;
+  }
+
+  button[type="submit"] {
+      font-size: 1em;
   }
 }
